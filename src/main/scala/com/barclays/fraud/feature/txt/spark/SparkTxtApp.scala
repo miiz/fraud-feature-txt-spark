@@ -1,4 +1,4 @@
-package com.barclays.fraud.feature.spark
+package com.barclays.fraud.feature.txt.spark
 
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -23,8 +23,8 @@ object SparkTxtApp {
       .reduceByKey(_ + _)
 
     counts.foreach(println)
-    System.out.println("Total words: " + counts.count());
-    counts.saveAsTextFile("/tmp/shakespeareWordCount");
+    System.out.println("Total words: " + counts.count())
+    counts.saveAsTextFile("/tmp/shakespeareWordCount"+System.nanoTime())
   }
 
 }
