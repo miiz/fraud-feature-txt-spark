@@ -1,6 +1,6 @@
 package com.barclays.fraud.feature.txt.spark
 
-import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.{SparkConf, SparkContext, SparkFiles}
 
 /**
  * @author ${user.name}
@@ -14,8 +14,10 @@ object SparkTxtApp {
     conf.setAppName("Word Count")
     val sc = new SparkContext(conf)
 
+    sc.addFile("https://github.com/miiz/fraud-feature-txt-spark/raw/master/src/main/resources/shakespeare.txt")
+    val filePath = SparkFiles.get("shakespeare.txt")
     // Load the text into a Spark RDD, which is a distributed representation of each line of text
-    val textFile = sc.textFile("src/main/resources/shakespeare.txt")
+    val textFile = sc.textFile(filePath)
 
     //word count
     val counts = textFile.flatMap(line => line.split(" "))
