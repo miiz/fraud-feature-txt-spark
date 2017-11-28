@@ -10,7 +10,7 @@ object SparkTxtApp {
   def main(args : Array[String]) {
     //Create a SparkContext to initialize Spark
     val conf = new SparkConf()
-    conf.setMaster("local");
+    //conf.setMaster("local");
     conf.setAppName("Word Count")
     val sc = new SparkContext(conf)
 
